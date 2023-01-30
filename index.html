@@ -88,13 +88,23 @@
    <script>
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
-    output.innerHTML = "PROCASTINATE";//slider.value;
+    var list = [];
+    output.innerHTML = "PROCRASTINATE";//slider.value;
     
     slider.oninput = function() {
       if (this.value == 1) {
         output.innerHTML = "<i>WORK</i>";
+          const date = new Date();
+          list.push(`WORK : ${date.toLocaleTimeString()}`);
+          list.forEach(function(item) {
+                console.log(item);
+            });
       } else {
-        output.innerHTML = "PROCASTINATE";
+        output.innerHTML = "PROCRASTINATE";
+        list.push(`PROCRASTINATE : ${date.toLocaleTimeString()}`);
+          list.forEach(function(item) {
+            console.log(item);
+         });
       }
     }
   </script>
