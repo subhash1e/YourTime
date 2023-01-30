@@ -3,7 +3,7 @@
     <title>myTime</title>
     <style>
         body{
-            background-color: rgb(51, 129, 68);
+            background-color: rgb(195, 197, 184);
         }
         #time {
             background-color: rgb(24, 19, 19);
@@ -73,7 +73,9 @@
          value="0" class="slider" id="myRange">
         <p> <span id="demo"></span></p>
       </div>
-   
+   <div id="history">
+
+   </div>
 </body>
 <script>
     function updateTime() {
@@ -90,21 +92,23 @@
     var output = document.getElementById("demo");
     var list = [];
     output.innerHTML = "PROCRASTINATE";//slider.value;
-    
+    var container = document.getElementById("history");
     slider.oninput = function() {
       if (this.value == 1) {
         output.innerHTML = "<i>WORK</i>";
           const date = new Date();
-          list.push(`WORK : ${date.toLocaleTimeString()}`);
-          list.forEach(function(item) {
-                console.log(item);
-            });
+          var p = document.createElement("p");
+          p.innerHTML = (`WORK : ${date.toLocaleTimeString()}`);
+          p.style.color = "green"
+          container.appendChild(p);
+          
       } else {
+        const date = new Date();
         output.innerHTML = "PROCRASTINATE";
-        list.push(`PROCRASTINATE : ${date.toLocaleTimeString()}`);
-          list.forEach(function(item) {
-            console.log(item);
-         });
+        var p = document.createElement("p");
+          p.innerHTML = (`PROCRASTINATE : ${date.toLocaleTimeString()}`);
+          p.style.color = "red"
+          container.appendChild(p);
       }
     }
   </script>
